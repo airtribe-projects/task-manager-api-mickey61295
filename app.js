@@ -102,13 +102,6 @@ app.put('/tasks/:id', (req, res) => {
     return res.status(200).json(updated);
 });
 
-app.get('/tasks/priority/:level', (req, res) => {
-    const level = String(req.params.level).toLowerCase();
-    const allowed = ['low', 'medium', 'high'];
-    if (!allowed.includes(level)) return res.status(400).json({ error: 'Invalid priority level' });
-    const results = tasks.filter((t) => String(t.priority).toLowerCase() === level);
-    return res.status(200).json(results);
-});
 
 app.delete('/tasks/:id', (req, res) => {
     const id = Number(req.params.id);
